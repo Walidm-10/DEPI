@@ -1,0 +1,47 @@
+﻿@model CustomIdentity.Models.Member
+
+<h2>@Model.Name's Details</h2>
+
+<p>Email: @Model.Email</p>
+<p>Phone: @Model.PhoneNumber</p>
+<p>Address: @Model.Address</p>
+<p>Joined: @Model.JoinDate.ToShortDateString()</p>
+
+<h3>Borrowing History</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Checkout Date</th>
+            <th>Due Date</th>
+            <th>Return Date</th>
+            <th>Penalties</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var checkout in Model.Checkouts)
+        {
+            <tr>
+                <td>@checkout.Book.Title</td>
+                <td>@checkout.CheckoutDate.ToShortDateString()</td>
+                <td>@checkout.DueDate.ToShortDateString()</td>
+                <td>@checkout.ReturnDate?.ToShortDateString()</td>
+                <td>
+                    @if (checkout.Penalties.Any())
+                    {
+                        <ul>
+                            @foreach (var penalty in checkout.Penalties)
+                            {
+                                <li>Penalty: @penalty.Amount (Paid: @penalty.IsPaid)</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span>No Penalties</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

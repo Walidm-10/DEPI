@@ -1,0 +1,41 @@
+﻿@using CustomIdentity.ViewModels;
+
+@model CheckoutCreateViewModel
+
+<h2>Create Checkout</h2>
+
+<form id="checkoutForm" asp-action="Create" method="post">
+    <div>
+        <label for="Checkout_MemberId">Select Member:</label>
+        <select asp-for="Checkout.MemberId" class="form-control" id="Checkout_MemberId">
+            <option value="">-- Select Member --</option>
+            @foreach (var member in Model.Members)
+            {
+                <option value="@member.MemberId">@member.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Checkout.MemberId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="Checkout_BookId">Select Book:</label>
+        <select asp-for="Checkout.BookId" class="form-control" id="Checkout_BookId">
+            <option value="">-- Select Book --</option>
+            @foreach (var book in Model.AvailableBooks)
+            {
+                <option value="@book.BookId">@book.Title</option>
+            }
+        </select>
+        <span asp-validation-for="Checkout.BookId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

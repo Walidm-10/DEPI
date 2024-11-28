@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Member>
+
+@{
+    ViewBag.Title = "Members List";
+}
+
+<h2>Members List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Registration Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.Name</td>
+                <td>@member.Email</td>
+                <td>@member.JoinDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

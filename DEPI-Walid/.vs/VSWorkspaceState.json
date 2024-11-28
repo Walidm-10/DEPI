@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\GP_DEPI",
+    "\\GP_DEPI\\Migrations",
+    "\\GP_DEPI\\Models",
+    "\\GP_DEPI\\Properties",
+    "\\GP_DEPI\\ViewModels",
+    "\\GP_DEPI\\Views",
+    "\\GP_DEPI\\wwwroot",
+    "\\GP_DEPI\\wwwroot\\css",
+    "\\GP_DEPI\\wwwroot\\js"
+  ],
+  "SelectedNode": "\\GP_DEPI\\Models\\Checkout.cs",
+  "PreviewInSolutionExplorer": false
+}

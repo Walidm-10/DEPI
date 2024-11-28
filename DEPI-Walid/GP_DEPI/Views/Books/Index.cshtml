@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Books List";
+}
+<h1>Books</h1>
+<p>
+    <a asp-action="Create" asp-controller="Books" class="btn btn-primary">Create New Book</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Genre</th>
+            <th>Published Year</th>
+            <th>Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Category</td>
+                <td>@book.Genre</td>
+                <td>@book.PublishedYear</td>
+                <td>@(book.IsAvailable ? "Yes" : "No")</td>
+            </tr>
+        }
+    </tbody>
+</table>

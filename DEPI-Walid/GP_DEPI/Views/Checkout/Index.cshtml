@@ -1,0 +1,42 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Checkouts";
+}
+
+<h2>Checkouts</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Member Name</th>
+            <th>Checkout Date</th>
+            <th>Due Date</th>
+            <th>Return Date</th>
+            <th>Penalty Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var checkout in Model)
+        {
+            <tr>
+                <td>@checkout.BookTitle</td>
+                <td>@checkout.MemberName</td>
+                <td>@checkout.CheckoutDate.ToShortDateString()</td>
+                <td>@checkout.DueDate.ToShortDateString()</td>
+                <td>@(checkout.ReturnDate?.ToShortDateString() ?? "Not Returned")</td>
+                <td>@checkout.PenaltyAmount.ToString("C")</td>
+                   
+                <td>
+                    <form asp-action="Return" asp-route-id="@checkout.CheckoutId" method="post">
+                        <button type="submit" class="btn btn-danger" @((checkout.ReturnDate != null ? "disabled" : ""))>Return</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Checkout a Book</a>

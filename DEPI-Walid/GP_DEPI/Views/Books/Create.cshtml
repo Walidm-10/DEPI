@@ -1,0 +1,55 @@
+﻿@model CustomIdentity.Models.Book
+
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<h2>Create Book</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Author"></label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Category"></label>
+        <input asp-for="Category" class="form-control" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Genre"></label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PublishedYear"></label>
+        <input asp-for="PublishedYear" class="form-control" />
+        <span asp-validation-for="PublishedYear" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <input asp-for="IsAvailable" class="form-check-input" type="checkbox" />
+        <label class="form-check-label" for="IsAvailable">Available</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

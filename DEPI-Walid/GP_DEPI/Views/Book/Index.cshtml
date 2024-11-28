@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CustomIdentity.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Books</h1>
+
+<!-- Search form -->
+<form asp-controller="Book" asp-action="Index" method="get">
+    <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Search by title, author, or genre" />
+    <input type="submit" value="Search" />
+</form>
+
+<!-- Books List -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>IsAvailable</th>
+            <!-- Other columns -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Genre</td>
+                <td>@book.IsAvailable</td>
+                <!-- Other columns -->
+            </tr>
+        }
+    </tbody>
+</table>
